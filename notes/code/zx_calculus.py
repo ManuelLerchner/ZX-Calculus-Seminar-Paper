@@ -11,13 +11,13 @@ IDENTITY = spider(1, 1, "red")
 CUP = spider(0, 2, "red")
 CAP = spider(2, 0, "red")
 
-R12 = spider(2, 1, "red")
-G21 = spider(1, 2, "green")
-G12 = spider(2, 1, "green")
-R21 = spider(1, 2, "red")
+R21 = spider(2, 1, "red")
+G12 = spider(1, 2, "green")
+G21 = spider(2, 1, "green")
+R12 = spider(1, 2, "red")
 
-CNOT_C0 = compose([IDENTITY, R12], [G21, IDENTITY])
-CNOT_C1 = compose([IDENTITY, G12], [R21, IDENTITY])
+CNOT_C0 = compose([IDENTITY, R21], [G12, IDENTITY])
+CNOT_C1 = compose([IDENTITY, G21], [R12, IDENTITY])
 
 ZERO = spider(0, 1, "red")
 ONE = spider(0, 1, "red", np.pi)
@@ -35,4 +35,6 @@ SWAP = compose([CNOT_C0], [CNOT_C1], [CNOT_C0])
 # apply Cnot to |10> ----> |11>
 # print(compose([CNOT_C0], [ONE, ZERO]))
 
-print(Q_PLUS.T @ Q_PLUS)
+# print(Q_PLUS.T @ Q_PLUS)
+
+print(CNOT_C0)
