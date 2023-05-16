@@ -29,6 +29,13 @@
 
 + Using the simplification logic of ZX-Calculus, we can try reduce the T-Count of a circuit
 
+#### Example: T-Count Optimization
+
++ <https://www.youtube.com/watch?v=lKHiV-Cyb-w> 35:00
+  + Only use Clifford-T set gates
+
++ Trofoli gates
+
 ## ZX-Calculus Mathematical Background
 
 + ZX-Calculus is based on the mathematical model of Tensornetworks and Category Theory
@@ -36,6 +43,21 @@
 + Processes do something to data, and wires carry information
 
 + Combine them using an extension of the Diraac notation
+
+### Process Theory
+
++ Everything in the world is a Process
++ A Process is a black box, which takes some input A and transforms it into some output B
++ Processes can happen successively, $\circ$, or in parallel, $\otimes$
+  + Also ist auch eine zeitliche komponente dabei
+
++ Only topologies matter, not the specific position of the processes and wires
+
++ <https://www.youtube.com/watch?v=UQTTJV0ejfw>
+
++ sliding around, tensors and compositions
+
++ If it looks like the same graph its the same thing
 
 ## ZX-Notation
 
@@ -61,6 +83,7 @@
 + Each spider has a linear map associated with it
 
 + The linear map is a matrix, which is determined by the number of input and output lines (doesnt need to be square!) => !Hilbert Space
+  + (this isn't a problem, it just means ZX can describe non-unitary matrices.)
 
 + The linear map is determined by the number of input and output lines:
   + Input lines: $n$ ??????
@@ -70,8 +93,11 @@
 $$
 \begin{aligned}
 \text{GreenSpider}(n,m)_\alpha &= |\underbrace{0\dots 0}_{m}\rangle \langle \underbrace{0\dots0}_{n}| &+& e^{i\alpha}|\underbrace{1\dots1}_{m}\rangle \langle \underbrace{1\dots1}_{n}|\\
+&= |0\rangle^{\otimes m} \langle 0|^{\otimes n} &+& e^{i\alpha}|1\rangle^{\otimes m} \langle 1|^{\otimes n}
+\\
 
-\text{RedSpider}(n,m)\alpha &= |\underbrace{+ \dots +}_{m}\rangle \langle \underbrace{+ \dots +}_{n}| &+& e^{i\alpha}|\underbrace{- \dots -}_{m}\rangle \langle \underbrace{- \dots -}_{n}|
+\text{RedSpider}(n,m)\alpha &= |\underbrace{+ \dots +}_{m}\rangle \langle \underbrace{+ \dots +}_{n}| &+& e^{i\alpha}|\underbrace{- \dots -}_{m}\rangle \langle \underbrace{- \dots -}_{n}|\\
+&= |+\rangle^{\otimes m} \langle +|^{\otimes n} &+& e^{i\alpha}|-\rangle^{\otimes m} \langle -|^{\otimes n}
 \end{aligned}
 $$
 
@@ -119,6 +145,8 @@ $$
 + The result is a graph, which represents a quantum circuit
 + Notice that the relative position of the spiders does not matter, only the connections between them (their topology)
 
+## Transforming Quantum Circuits into ZX-Graphs
+
 ### Example: CNOT
 
 + The CNOT gates are key components of quantum circuits
@@ -127,7 +155,13 @@ $$
 
 [TODO: Picture]
 
++ We can transform any quantum circuit into a ZX-Graph
++ Each gate is represented by a Circuit in the ZX-Graph
+  + Table. !TODO
+
 + How to represent this as a matrix?
+
+#### Breaking down a diagram into generators
 
 + We divide up the graph, into regions, each of which contains a single spider
 
@@ -156,6 +190,69 @@ $$
 + Combining the vertical regions:
   + $\text{CNOT} = A \cdot B = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 &0\\ 0 & 0 & 0 & 1 \\0 & 0 & 1 & 0 \\ \end{pmatrix}$
 
+### Showing that only topology matters
+
++ Different ways of dividing up the graph into regions can lead to different matrices
+
++ ![Image](TODO)
+
++ However, the matrices are equivalent up to a factor
+
+### Example applying CNOT to two qubits
+
++ We can now apply the CNOT gate to two qubits
++ ![Image](TODO)
+
 + But calculating a circuit in this way is just as slow as simulating the circuit classically
 
 ## Simplification Rules
+
+### Spider-fusion
+
++ If two spiders of the **same color** are connected to each other, they can be fused into a single spider. If they have phases, the phases are simply added together
+
++ ![Image](TODO)
+
++ We now see that it is not needed to keep track of input and outputs of the spiders, since we can freely exchange them using this rule
+  + Only topology matters
+
+### Hopf Rule
+
++ If two spiders of **different color** are connected to each other with two lines, the connecting wires can be removed
+
++ ![Image](TODO)
+
+### Bi-Algebra Rule
+
++ ??
+
+### Copy Rules
+
++ ![Image](TODO)
++ ![Image](TODO)
+
++ WE say green copyies red, and red copies green
+
+### Color Change Rule
+
++ We can change the color of a spider, by adding a Hadamard spider to all its inputs and outputs
+
++ ![Image](TODO)
+
+#### Hadamard
+
++ In order to use the color change rule, we need to introduce a new spider, the Hadamard spider
++ Using the euler angle representation of the Hadamard gate, we can derive the following graph
++ ![Image](TODO)
+
+## Example Circuit simplification
+
+### Swap using 3 CNOTs
+
+### Erzeugung von Bell States
+
+### Quantum Teleportation
+
+### BB84jj
+
+### Quantum Fourier Transform

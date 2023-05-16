@@ -1,4 +1,5 @@
 import numpy as np
+from qmath.tensor import tensor_repeat, tensor
 from zx_helper.compose import compose
 from zx_helper.spider import spider
 from constants import Q_MINUS, Q_ONE, Q_PLUS, Q_ZERO
@@ -32,9 +33,11 @@ HADAMARD = compose([spider(1, 1, "green", np.pi / 2)],
 
 SWAP = compose([CNOT_C0], [CNOT_C1], [CNOT_C0])
 
-# apply Cnot to |10> ----> |11>
-# print(compose([CNOT_C0], [ONE, ZERO]))
+HOPF_RULE = compose([R21], [G12])
+HOPF_RESULT = compose([spider(0, 1, "red")], [spider(1, 0, "green")])
 
-# print(Q_PLUS.T @ Q_PLUS)
 
-print(CNOT_C0)
+print(HOPF_RULE)
+print(HOPF_RESULT)
+print(spider(0, 1, "red"))
+print(spider(1, 0, "green"))
