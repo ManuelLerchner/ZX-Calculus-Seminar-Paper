@@ -8,6 +8,14 @@
 
 ## Applications
 
+### Quantum Circuit Optimization
+
++ Circuits are transformed into new circuits, which are equivalent
+  + involving fewer gates
+  + consisting of simpler gates [https://quantum-journal.org/papers/q-2020-06-04-279/pdf/]
+
++ Advantages of ZX vs classical identities <https://www.youtube.com/watch?v=JafI_LZts2g>
+
 ### Compilation of quantum circuits
 
 + Quantum circuits can be drawn with abstract gates
@@ -17,6 +25,12 @@
   + E.g. CNOT, Toffoli, ...
 
 + ZX-Calculus can be used to compile abstract quantum circuits (Quiskit) into a sequence of elementary gates
+
++ Which Metrics to use for optimization?
+
+  + T-Count
+  + #Gates
+  + #Cnot
 
 ### T-Count Optimization
 
@@ -43,6 +57,9 @@
 + Processes do something to data, and wires carry information
 
 + Combine them using an extension of the Diraac notation
+
++ Frobinius Algebras
+  + [Math](https://www.cs.ox.ac.uk/people/bob.coecke/GreenRed.pdf)
 
 ### Process Theory
 
@@ -103,6 +120,23 @@ $$
 
 ### Examples of Spiders
 
++ **Basis States**
+  + A simple spider with zero input lines and one output can be thought of a basis state
+  + The color of the spider determines the basis
+  
+  + Matrix representation
+    + $\text{GreenSpider}(0,1) = |0\rangle \cdot 1 + |1\rangle \cdot 1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix} \propto |+\rangle$
+    + $\text{GreenSpider}(0,1,\pi) = |0\rangle \cdot 1 + |1\rangle \cdot e^{i\pi} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} \propto |-\rangle$
+    + $\text{RedSpider}(0,1) = |+\rangle \cdot 1 + |-\rangle \cdot 1 = \begin{pmatrix} 2 \\ 0 \end{pmatrix} \propto |0\rangle$
+    + $\text{RedSpider}(0,1,\pi) = |+\rangle \cdot 1 + |-\rangle \cdot e^{i\pi} = \begin{pmatrix} 0 \\ 2 \end{pmatrix} \propto |1\rangle$
+
++ **Pauli Matrices**
+  + The Pauli Matrices can also be represented as spiders
+  + Matrix representation
+
+    + $\text{GreenSpider}(1,1,\pi) = |0\rangle \langle 0| + e^{i\pi}|1\rangle \langle 1| = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} = Z$
+    + $\text{RedSpider}(1,1,\pi) = |+\rangle \langle +| + e^{i\pi}|-\rangle \langle -| = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = X$
+
 + **Green Copy Spider**
   + This spider is supposed to copy its "input" to both of its "outputs"
   + How exactly this works, we will see later
@@ -146,6 +180,10 @@ $$
 + Notice that the relative position of the spiders does not matter, only the connections between them (their topology)
 
 ## Transforming Quantum Circuits into ZX-Graphs
+
++ Since classical Quantum Circuits are a subset of ZX-Diagrams, it is possible to construct ZX-Diagrams which are not valid Quantum Circuits
++ But this is no problem, aslong as we can transform the Diagram back into a valid Quantum Circuit
++ [Image Schematically](https://quantum-journal.org/papers/q-2020-06-04-279/pdf/)
 
 ### Example: CNOT
 
@@ -256,3 +294,18 @@ $$
 ### BB84jj
 
 ### Quantum Fourier Transform
+
+### Completness
+
++ ZX-Calculus is complete, meaning that any two ZX-Graphs that represent the same quantum circuit can be transformed into each other using the rules of the ZX-Calculus
+  + But the path, between the two graphs, can traverse Graphs which dont represent valid quantum circuits
+
+### Python ZX Library
+
++ Example
++ Metrics
+
+## Todo
+
++ Phase Gadgets
++ From ZX to Circuit
