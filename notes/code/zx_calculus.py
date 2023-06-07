@@ -39,5 +39,5 @@ HOPF_RESULT = compose([spider(0, 1, "red")], [spider(1, 0, "green")])
 
 print(HOPF_RULE)
 print(HOPF_RESULT)
-print(spider(0, 1, "red"))
-print(spider(1, 0, "green"))
+print(spider(1, 1, "red"))
+print(spider(1, 1, "green"))
