@@ -1,0 +1,44 @@
+
+
+\documentclass{article}
+\usepackage[landscape=true]{geometry}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{tikz}
+
+\usepackage{mathtools}
+\usepackage{unicode-math}
+
+\usetikzlibrary{zx-calculus}
+
+\DeclarePairedDelimiter{\Brack}{\lBrack}{\rBrack}
+\newenvironment{bbmatrix}%
+  {\left\lBrack\begin{matrix}}%
+  {\end{matrix}\right\rBrack}
+
+\begin{document}
+
+
+
+
+\begin{ZX}
+  \zxX{} \rar & \zxX{} \ar[rd,(.] \ar[rd,('] & & \zxN{} \rar &\zxN{}\\
+  \zxX{} \ar[rr] & &  \zxZ{} \ar[r] \ar[ru,(']  & \zxN{} \rar &\zxN{}
+\end{ZX}
+
+
+
+\vspace{20px}
+
+
+
+
+
+
+
+
+
+\end{document}
+
+

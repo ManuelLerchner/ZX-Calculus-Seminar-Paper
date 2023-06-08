@@ -37,7 +37,4 @@ HOPF_RULE = compose([R21], [G12])
 HOPF_RESULT = compose([spider(0, 1, "red")], [spider(1, 0, "green")])
 
 
-print(HOPF_RULE)
-print(HOPF_RESULT)
-print(spider(1, 1, "red"))
-print(spider(1, 1, "green"))
+print(compose([spider(3, 2, "green")], [R12, IDENTITY]).shape)
