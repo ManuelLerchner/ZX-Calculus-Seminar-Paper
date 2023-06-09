@@ -8,7 +8,7 @@ from qmath.tensor import tensor_repeat
 def spider(n: int, m: int, color: Literal["red", "green"],
            phase: float = 0) -> np.ndarray:
     """
-    Converts a spider with m inputs and n outputs to a matrix.
+    Converts a spider with n inputs and m outputs to a matrix.
     """
 
     if color == "red":

@@ -17,8 +17,8 @@ G12 = spider(1, 2, "green")
 G21 = spider(2, 1, "green")
 R12 = spider(1, 2, "red")
 
-CNOT_C0 = compose([IDENTITY, R21], [G12, IDENTITY])
-CNOT_C1 = compose([IDENTITY, G21], [R12, IDENTITY])
+CNOT_C0 = compose([IDENTITY, R12], [G21, IDENTITY])
+CNOT_C1 = compose([IDENTITY, G12], [R21, IDENTITY])
 
 ZERO = spider(0, 1, "red")
 ONE = spider(0, 1, "red", np.pi)
@@ -30,11 +30,10 @@ HADAMARD = compose([spider(1, 1, "green", np.pi / 2)],
                    [spider(1, 1, "red", np.pi / 2)],
                    [spider(1, 1, "green", np.pi / 2)])
 
-
 SWAP = compose([CNOT_C0], [CNOT_C1], [CNOT_C0])
 
 HOPF_RULE = compose([R21], [G12])
 HOPF_RESULT = compose([spider(0, 1, "red")], [spider(1, 0, "green")])
 
 
-print(compose([spider(3, 2, "green")], [R12, IDENTITY]).shape)
+print(CNOT_C0)

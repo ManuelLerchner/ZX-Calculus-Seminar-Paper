@@ -6,6 +6,7 @@
 \usepackage{tree-dvips}
 \usepackage{amsmath,amssymb,amsthm,amsfonts}
 \usepackage{tikz}
+\usepackage[export]{adjustbox}
 
 \usepackage{mathtools}
 \usepackage{unicode-math}
@@ -23,11 +24,61 @@
 
 
 \begin{ZX}
-  \zxX{} \rar & \zxX{} \ar[rd,(.] \ar[rd,('] & & \zxN{} \rar &\zxN{}\\
-  \zxX{} \ar[rr] & &  \zxZ{} \ar[r] \ar[ru,(']  & \zxN{} \rar &\zxN{}
+  \zxNone{}\rar& \zxZ{\frac{\pi}{2}} \rar & \zxX{\frac{\pi}{2}} \rar & \zxZ{\frac{\pi}{2}} \rar & \zxZ{\frac{\pi}{2}} \rar & \zxX{\frac{\pi}{2}} \rar & \zxZ{\frac{\pi}{2}} \rar & \zxNone{}
 \end{ZX}
 
 
+
+\vspace{20px}
+
+
+
+\begin{ZX}
+  \zxNone{}\rar& \zxZ{\frac{\pi}{2}} \rar & \zxX{\frac{\pi}{2}} \rar & \zxZ{\pi}\rar & \zxX{\frac{\pi}{2}} \rar & \zxZ{\frac{\pi}{2}} \rar & \zxNone{}
+\end{ZX}
+
+
+
+
+
+
+
+\vspace{20px}
+
+\begin{ZX}
+  \zxNone{}\rar& \zxZ{\frac{\pi}{2}} \rar &\zxZ{\pi}\rar& \zxX{-\frac{\pi}{2}} \rar   & \zxX{\frac{\pi}{2}} \rar & \zxZ{\frac{\pi}{2}} \rar & \zxNone{}
+\end{ZX}
+
+\vspace{20px}
+
+\begin{ZX}
+  \zxNone{}\rar& \zxZ{\frac{3\pi}{2}} \rar & \zxX{0} \rar  & \zxZ{\frac{\pi}{2}} \rar & \zxNone{}
+\end{ZX}
+
+\vspace{20px}
+
+\begin{ZX}
+  \zxNone{}\rar& \zxZ{\frac{3\pi}{2}} \rar   & \zxZ{\frac{\pi}{2}} \rar &\zxNone{}
+\end{ZX}
+
+
+\vspace{20px}
+
+\begin{ZX}
+  \zxNone{}\rar& \zxZ{2\pi} \rar & \zxNone{}
+\end{ZX}
+
+\vspace{20px}
+
+\begin{ZX}
+  \zxNone{}\rar& \zxZ{0} \rar & \zxNone{}
+\end{ZX}
+
+\vspace{20px}
+
+\begin{ZX}
+  \zxNone{}\rar& \zxNone{} \rar& \zxNone{} \rar& \zxNone{}\rar& \zxNone{}\rar& \zxNone{}
+\end{ZX}
 
 \vspace{20px}
 

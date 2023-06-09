@@ -14,7 +14,7 @@ def compose(*steps: List[np.ndarray]) -> np.ndarray:
 
     combination_result = 1
 
-    for step in steps:
+    for step in steps[::-1]:
         step_result = np.array([[1]], dtype=complex)
         for element in step:
             step_result = tensor(step_result, element)
