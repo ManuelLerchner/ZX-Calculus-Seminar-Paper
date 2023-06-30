@@ -1,0 +1,44 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage{graphicx}
+
+
+\begin{document}
+
+\newcommand*{\getUniversity}{Technische Universität München}
+\newcommand*{\getFaculty}{Fraunhofer Institut (AISEC)}
+\newcommand*{\getTitle}{ZX-Calculus}
+\newcommand*{\getAuthor}{Manuel Lerchner}
+\newcommand*{\getDoctype}{Seminararbeit}
+\newcommand*{\getSubmissionDate}{\today}
+
+\begin{titlepage}
+    \centering
+
+    \includegraphics[height=20mm]{../logos/tum.pdf}
+    \vspace*{20mm}
+
+    \vspace{5mm}
+    {\huge\MakeUppercase{\getFaculty{}}}\\
+
+    \vspace{5mm}
+    {\large\MakeUppercase{\getUniversity{}}}\\
+
+    \vspace{20mm}
+    {\Large \getDoctype{}}
+
+    \vspace{15mm}
+    {\huge\bfseries \getTitle{}}
+
+    \vspace{15mm}
+    \begin{tabular}{l l}
+        Author:          & \getAuthor{}         \\
+        Submission Date: & \getSubmissionDate{} \\
+    \end{tabular}
+
+
+    \vfill
+
+    \includegraphics[height=20mm]{../logos/faculty.png}
+\end{titlepage}
+
+\end{document}
