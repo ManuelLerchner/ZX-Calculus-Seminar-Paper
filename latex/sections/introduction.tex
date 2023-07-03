@@ -43,9 +43,7 @@ Such a decomposition is shown in figure \ref{fig:toffoli_decomposition}. Notice 
 
 This is where Circuit Optimizers come into play. They try to reduce the amount of gates in a circuit. This can be done by applying a set of rewrite rules to the circuit. The goal is to find a circuit that is equivalent to the original circuit, but has less gates. An important metric for simplifying quantum circuits is the so called \textit{T-Count}. The T-Count is the amount of T gates in a circuit. Since the T-Gate is a non-Clifford gate it is very expensive to simulate and requires order of magnitudes more resources than the other clifford gates. \cite{kissinger2020TCount}
 
-This process is called \textit{quantum circuit optimization}.
-
-\subsection{Classical Circuit Optimization}
+\subsection{Drawbacks of Classical Circuit Optimization}
 
 There are many different approaches to quantum circuit optimization. The most basic approach is to apply a set of rewrite rules directly to the logic-gate representation of the circuit. This approach is called \textit{gate-level optimization}. \cite{namyross2018automated}
 

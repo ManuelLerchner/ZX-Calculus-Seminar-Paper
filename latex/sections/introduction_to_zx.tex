@@ -1,7 +1,8 @@
 \section{Introduction to ZX-Calculus}
 
-ZX-Calculus has been kickstarted by Coecke and Duncan in 2008 \cite{Coecke2007graphicalcalculus}. Since then, it has been used to prove a lot of interesting results in quantum computing. It used in the field of Measurement Based Quantum Computing (MBQC) \cite{duncan2012graphical}. Recently \cite{vandewetering2020zxcalculus} it has found wide application in quantum circuit optimization and verification.
+ZX-Calculus has been kickstarted by Coecke and Duncan in 2008 \cite{Coecke2007graphicalcalculus}. Since then, it has been used to prove a lot of interesting results in quantum computing. It was initially used in the field of Measurement Based Quantum Computing (MBQC) \cite{duncan2012graphical}. But recently it has found wide application in quantum circuit optimization and verification  \cite{vandewetering2020zxcalculus}.
 
+\subsection{ZX-Diagrams}
 
 A ZX-diagram is a graph consisting of nodes and edges. The nodes are called spiders and are colored either green or red. Additionally, they may carry a phase value $\alpha \in [0, 2\pi)$. Spiders are visuallized in the following way:
 
@@ -22,7 +23,7 @@ A ZX-diagram is a graph consisting of nodes and edges. The nodes are called spid
 
 Here $n$ and $m$ are the number of incoming and outgoing edges, respectively. The phase value $\alpha$ is optional and can be omitted if it is zero.
 
-It is important to remember that each spider represents a linear map from $n$ to $m$ qubits. This linear maps can be directly calculated using the following formulas:
+It is important to remember that each spider represents a linear map from $n$ to $m$ qubits. The values of those linear maps can be directly calculated using the following formulas:
 
 \vspace{5pt}
 \zx{\leftManyDots{n}  \zxX{\alpha} \rightManyDots{m}} $\equiv |\underbrace{0\dots 0}_{m}\rangle \langle \underbrace{0\dots0}_{n}| + e^{i\alpha}|\underbrace{1\dots1}_{m}\rangle \langle \underbrace{1\dots1}_{n}|$
@@ -33,7 +34,11 @@ It is important to remember that each spider represents a linear map from $n$ to
 \end{ZX} $\equiv |\underbrace{+\dots +}_{m}\rangle \langle \underbrace{+\dots+}_{n}| - e^{i\alpha}|\underbrace{-\dots-}_{m}\rangle \langle \underbrace{-\dots-}_{n}|$
 \vspace{5pt}
 
-By just using single spiders, we can already represent a lot of quantum gates. The most important ones are shown in figure \ref{fig:spiders}. Note that in ZX-Calculus we ignore the global scalar factor of a quantum gate
+
+
+\subsection{Example Spiders and their Linear Maps}
+
+By just using single spiders, we can already represent a lot of quantum gates. The most important ones are shown in figure \ref{fig:spiders}. Note that we are going to ignore the global scalar value of a circuit, as it does not change the outcome of the simplificiation process. It is always possible to add it back at the end.
 
 \subsection*{Verifying some Unitary Gates}
 
