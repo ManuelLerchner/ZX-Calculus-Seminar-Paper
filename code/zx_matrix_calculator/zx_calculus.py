@@ -37,3 +37,9 @@ HOPF_RESULT = compose([spider(0, 1, "red")], [spider(1, 0, "green")])
 
 
 print(CNOT_C0)
+
+
+Z = spider(1, 1, "green", np.pi)
+X = spider(1, 1, "red", np.pi)
+
+print(compose([Z], [X]))

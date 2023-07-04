@@ -1,0 +1,130 @@
+\section{Appendix}
+
+\subsection{ZX-Representation of the Pauli Z-Gate}
+\label{appendix:pauli-z-gate-as-spider}
+
+\begin{figure}[h]
+    \begin{align*}
+        \begin{ZX}
+            \zxN{} \rar &[\zxwCol] \zxZ{\pi} \rar &[\zxwCol] \zxN{}
+        \end{ZX}
+         & \equiv |\underbrace{0\dots 0}_{1}\rangle \langle \underbrace{0\dots0}_{1}| + e^{i\pi}|\underbrace{1\dots1}_{1}\rangle \langle \underbrace{1\dots1}_{1}| \\
+         & =
+        |0\rangle \langle 0| - |1\rangle \langle 1|                                                                                                                \\
+         & =
+        \begin{pmatrix}
+            1 \\
+            0 \\
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 0 \\
+        \end{pmatrix}
+        - \begin{pmatrix}
+              0 \\
+              1 \\
+          \end{pmatrix}
+        \begin{pmatrix}
+            0 & 1 \\
+        \end{pmatrix}                                                                                                                                             \\
+         & =
+        \begin{pmatrix}
+            1 & 0  \\
+            0 & -1 \\
+        \end{pmatrix}                                                                                                                                             \\
+         & = Z
+        \\
+    \end{align*}
+    \caption{Pauli-Z gate represented as a ZX-Diagram}
+\end{figure}
+
+\subsection{ZX-Representation of the Pauli X-Gate}
+\label{appendix:pauli-x-gate-as-spider}
+
+
+\begin{figure}[h]
+    \begin{align*}
+        \begin{ZX}
+            \zxN{} \rar &[\zxwCol] \zxX{\pi} \rar &[\zxwCol] \zxN{}
+        \end{ZX}
+         & \equiv |\underbrace{+\dots +}_{1}\rangle \langle \underbrace{+\dots +}_{1}| + e^{i\pi}|\underbrace{-\dots -}_{1}\rangle \langle \underbrace{-\dots -}_{1}| \\
+         & =
+        |+\rangle \langle +| - |-\rangle \langle -|                                                                                                                   \\
+         & =
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 \\
+            1 \\
+        \end{pmatrix}
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 & 1 \\
+        \end{pmatrix}
+        -
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1  \\
+            -1 \\
+        \end{pmatrix}
+        \frac{1}{\sqrt{2}}
+        \begin{pmatrix}
+            1 & -1 \\
+        \end{pmatrix}                                                                                                                                                \\
+         & =
+        \frac{1}{2}
+        \begin{pmatrix}
+            1 & 1 \\
+            1 & 1 \\
+        \end{pmatrix}
+        -
+        \frac{1}{2}
+        \begin{pmatrix}
+            1  & -1 \\
+            -1 & 1  \\
+        \end{pmatrix}                                                                                                                                                \\
+         & =
+        \begin{pmatrix}
+            0 & 1 \\
+            1 & 0 \\
+        \end{pmatrix}                                                                                                                                                \\
+         & = X
+    \end{align*}
+    \caption{Pauli-X gate represented as a ZX-Diagram}
+\end{figure}
+
+\subsection{ZX-Representation of the Pauli Y-Gate}
+\label{appendix:pauli-y-gate-as-spider}
+
+\begin{figure}[h]
+    \begin{align*}
+        \begin{ZX}
+            \zxN{} \rar &\zxZ{\pi} \rar &\zxX{\pi} \rar& \zxN{}
+        \end{ZX}
+         & \equiv   \begin{ZX}
+                        \zxN{} \rar &\zxZ{\pi} \rar & \zxN{}
+                    \end{ZX} \circ \begin{ZX}
+                                       \zxN{} \rar &\zxX{\pi} \rar & \zxN{}
+                                   \end{ZX} \\
+         & \equiv Z \circ X
+        \\
+         & = XZ                                                        \\
+         & =
+        \begin{pmatrix}
+            0 & 1 \\
+            1 & 0 \\
+        \end{pmatrix}
+        \begin{pmatrix}
+            1 & 0  \\
+            0 & -1 \\
+        \end{pmatrix}
+        \\
+         & =
+        \begin{pmatrix}
+            0 & -1 \\
+            1 & 0  \\
+        \end{pmatrix}                                                 \\
+         & = Y/i                                                       \\
+         & \propto Y
+    \end{align*}
+    \caption{Pauli-Y gate represented as a ZX-Diagram}
+\end{figure}
+
