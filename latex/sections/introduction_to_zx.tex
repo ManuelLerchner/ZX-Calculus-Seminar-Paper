@@ -29,21 +29,26 @@ It is important to remember that each spider represents a morphism in the $\math
 
 \begin{figure}[h]
     \begin{align*}
+        \left \llbracket
         \begin{ZX}
             \leftManyDots{n}  \zxZ{\alpha} \rightManyDots{m}
         \end{ZX}
-        :=                                               & |\underbrace{0\dots 0}_{m}\rangle \langle \underbrace{0\dots0}_{n}| + e^{i\alpha}|\underbrace{1\dots1}_{m}\rangle \langle \underbrace{1\dots1}_{n}|
+        \right \rrbracket
+        := & |\underbrace{0\dots 0}_{m}\rangle \langle \underbrace{0\dots0}_{n}| + e^{i\alpha}|\underbrace{1\dots1}_{m}\rangle \langle \underbrace{1\dots1}_{n}|
         \\
-        =                                                & \begin{pmatrix}
-                                                               1      & 0      & \dots  & 0           \\
-                                                               0      & 0      & \dots  & 0           \\
-                                                               \vdots & \vdots & \ddots & \vdots      \\
-                                                               0      & 0      & \dots  & e^{i\alpha} \\
-                                                           \end{pmatrix}
+        =  & \begin{pmatrix}
+                 1      & 0      & \dots  & 0           \\
+                 0      & 0      & \dots  & 0           \\
+                 \vdots & \vdots & \ddots & \vdots      \\
+                 0      & 0      & \dots  & e^{i\alpha} \\
+             \end{pmatrix}
         \\
+        \left \llbracket
         \begin{ZX}
             \leftManyDots{n}  \zxX{\alpha} \rightManyDots{m}
-        \end{ZX} := & |\underbrace{+ \dots +}_{m}\rangle \langle \underbrace{- \dots -}_{n}| + e^{i\alpha}|\underbrace{- \dots -}_{m}\rangle \langle \underbrace{+ \dots +}_{n}|
+        \end{ZX}
+        \right \rrbracket
+        := & |\underbrace{+ \dots +}_{m}\rangle \langle \underbrace{- \dots -}_{n}| + e^{i\alpha}|\underbrace{- \dots -}_{m}\rangle \langle \underbrace{+ \dots +}_{n}|
         \\
     \end{align*}
     \caption{Linear maps represented by individual spiders}
@@ -107,18 +112,91 @@ In order to calculate the matrix representation of this circuit we first need to
 Using the rules we just defined we can now calculate the matrix representation of the circuit. We start by applying the $\textit{Parallel Composition}$ rules, to combine sections $A_1$ and $A_2$ into a new section $A$. The same is done for sections $B_1$ and $B_2$ to create section $B$. This reduction results in the ZX-Diagram shown in figure \ref{fig:cnot-gate-split-2}.
 
 
-The calculation looks as follows:
+We can also write this reduction as a formula. Let $R$ be the matrix representation of the circuit shown in figure \ref{fig:cnot-gate-split-4} Then we can write the reduction as shown in equation \ref{eq:cnot-gate-reduction}.
+
+
+\begin{equation}
+    \label{eq:cnot-gate-reduction}
+    \begin{split}
+        \underbrace{
+            \left \llbracket
+            \begin{ZX}
+                \zxNone{} \rar & \zxNone{} \rar      & \zxZ{}\rar & \\
+                \zxNone{} \rar & \zxX{} \rar \ar[ru] & \rar       & \\
+            \end{ZX}
+            \right \rrbracket
+        }_{R}
+        & =
+        \underbrace{
+            \left \llbracket
+            \begin{ZX}
+                \zxNone{} \rar & \zxNone{}\rar & \zxNone{} \\
+                \zxNone{} \rar & \zxX{} \rar \ar[ru] & \zxNone{} \\
+            \end{ZX}
+            \right \rrbracket
+        }_{A}
+        \circ
+        \underbrace{
+            \left \llbracket
+            \begin{ZX}
+                \zxNone{} \rar      & \zxZ{}\rar & \\
+                \zxNone{} \rar \ar[ru] & \rar       & \\
+            \end{ZX}
+            \right \rrbracket}_{B} \\
+        & =
+        (
+        \underbrace{
+            \left \llbracket
+            \begin{ZX}
+                \zxNone{} \rar & \zxNone{}\rar &[\zxwCol]  \zxNone{} \\
+            \end{ZX} \right \rrbracket
+        }_{A_1}
+        \otimes
+        \underbrace{
+            \left    \llbracket
+            \begin{ZX}
+                \rar & \zxX{} \rightManyDots[0][0]{}
+            \end{ZX}
+            \right \rrbracket
+        }_{A_2}
+        )
+        \circ
+        (
+        \underbrace{
+            \left \llbracket
+            \begin{ZX}
+                \leftManyDots[0][0]{} \zxZ{} \rar & \zxNone{}
+            \end{ZX}
+            \right \rrbracket
+        }_{B_1}
+        \otimes
+        \underbrace{
+            \left    \llbracket
+            \begin{ZX}
+                \zxNone{} \rar & \zxNone{}\rar &[\zxwCol]  \zxNone{} \\
+            \end{ZX}
+            \right \rrbracket
+        }_{B_2}
+        )
+    \end{split}
+\end{equation}
+
+
+The concrete calculation looks as follows:
 
 
 \begin{align*}
-    A & = A_1 \otimes A_2                           \\
-      & = id \otimes \text{RedSpider($n=1$, $m=2$)} \\
-      & =id    \otimes
-    |+\rangle \langle ++| + |-\rangle \langle --|   \\
-      & = \begin{pmatrix}
-              1 & 0 \\
-              0 & 1 \\
-          \end{pmatrix}
+    A    & = A_1 \otimes A_2                      \\
+         & = id \otimes \left \llbracket
+    \zx{
+    \rar & \zxX{} \rightManyDots[0][0]{}
+    } \right \rrbracket                           \\
+         & =id    \otimes
+    |+\rangle \langle ++| + |-\rangle \langle --| \\
+         & = \begin{pmatrix}
+                 1 & 0 \\
+                 0 & 1 \\
+             \end{pmatrix}
     \otimes
     \frac{1}{\sqrt{2}}
     \begin{pmatrix}
@@ -126,8 +204,8 @@ The calculation looks as follows:
         0 & 1 \\
         0 & 1 \\
         1 & 0 \\
-    \end{pmatrix}                                  \\
-      & = \frac{1}{\sqrt{2}}
+    \end{pmatrix}                                \\
+         & = \frac{1}{\sqrt{2}}
     \begin{pmatrix}
         1 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 \\
@@ -141,9 +219,11 @@ The calculation looks as follows:
 \end{align*}
 
 \begin{align*}
-    B & = B_1 \otimes B_2                             \\
-      & = \text{GreenSpider($n=2$, $m=1$)} \otimes id \\
-      & =
+    B                                 & = B_1 \otimes B_2               \\
+                                      & =\left \llbracket \zx{
+    \leftManyDots[0][0]{} \zxZ{} \rar & \zxNone{}
+    } \right \rrbracket \otimes id                                      \\
+                                      & =
     \begin{pmatrix}
         1 & 0 & 0 & 1 \\
         0 & 1 & 1 & 0 \\
@@ -152,20 +232,17 @@ The calculation looks as follows:
     \begin{pmatrix}
         1 & 0 \\
         0 & 1 \\
-    \end{pmatrix}                                    \\
-      & = \begin{pmatrix}
-              1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
-              0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\
-              0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\
-              0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 \\
-          \end{pmatrix}
+    \end{pmatrix}                                                      \\
+                                      & = \begin{pmatrix}
+                                              1 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+                                              0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+                                              0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 \\
+                                              0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 \\
+                                          \end{pmatrix}
 \end{align*}
 
 
-Now we have calculated all Regions from figure \ref{fig:cnot-gate-split-2} and can combine them into a single matrix. For this we apply the $\textit{Sequential Composition}$ rule to combine sections $A$ and $B$ into a new section $R$.
-
-The calculation looks as follows:
-
+Using the the $\textit{Sequential Composition}$ rule we can combine sections $A$ and $B$ into the resulting matrix $R$:
 
 \begin{align*}
     R & = A \circ B         \\
@@ -173,15 +250,15 @@ The calculation looks as follows:
       & =
     \frac{1}{\sqrt{2}}
     \begin{pmatrix}
-        1 & 0 & 0 \\
-        0 & 1 & 0 \\
-        0 & 0 & 1 \\
-        0 & 1 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0 \\
     \end{pmatrix}          \\
       & \propto \text{CNOT}
 \end{align*}
 
-The resulting matrix is proportional to the matrix representation of the CNOT gate. This means that the ZX-Diagram \zx{
+The resulting matrix $R$ is proportional to the matrix representation of the CNOT gate. This means that the ZX-Diagram \zx{
     \zxNone{} \rar & \zxNone{} \rar  &\zxZ{}\rar  &\\
     \zxNone{} \rar & \zxX{} \rar \ar[ru]  &\rar& \\
 } is indeed a valid representation of the CNOT gate.

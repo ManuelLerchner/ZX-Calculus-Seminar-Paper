@@ -4,6 +4,7 @@
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
+\usepackage{stmaryrd}
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
@@ -37,14 +38,7 @@
 
 \maketitle
 
-\begin{abstract}
-    ZX-Calculus is a graphical language which extends classical quantum circuits by splitting up logic gates into even smaller building blocks. Those building blocks are called spiders and are represented by colored nodes in a graph. Together with edges connecting those nodes, they form a ZX-diagram. Using a set of rewrite rules, ZX-diagrams can be transformed into each other. This allows for a more intuitive way of reasoning about the optimization of quantum circuits, as there are fewer rewrite rules to remember than in the classical logic gate model. In this paper, I will introduce the ZX-Calculus and its rewrite rules, as well as some of its applications. I will give a special focus on the optimization of quantum circuits, as this is one of the main applications of the ZX-Calculus.
-\end{abstract}
-
-\begin{IEEEkeywords}
-    quantum computing, ZX-Calculus, quantum circuits, circuit optimization
-\end{IEEEkeywords}
-
+\subfile{sections/abstract}
 
 \subfile{sections/introduction.tex}
 
@@ -52,30 +46,20 @@
 
 \subfile{sections/introduction_to_zx}
 
+\subfile{sections/simplification_rules}
 
-\section{Motivation}
+\subfile{sections/simplification_example}
 
+\subfile{sections/further_work}
 
-\section{Problem Statement}
-
-\section{Solution}
-
-\section{Evaluation}
-
-\section{Results}
-
-\section{Future Work}
-
-\section{Conclusion}
-
+\subfile{sections/conclusion}
 
 \bibliographystyle{plain}
 \bibliography{refs}
 
+\newpage
+
 \appendix
-
 \subfile{sections/appendix}
-
-
 
 \end{document}
