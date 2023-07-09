@@ -6,9 +6,31 @@ Note that all the rules can be applied in both directions. This means that we ca
 
 We also don't have to keep track which leg of the spider is the input and which one is the output. This rule corresponds to the $\textit{Only topology matters}$ mantra we introduced in the previous section.
 
+\subsection{Identity Removal}
+
+The rule we will look at is the identity removal rule. It isn't actually a simplification rule, but it makes it way easier to remove clutter from the diagram. The rule states that we can remove any spider with exactly one input and one output if it has a phase of $0$, and can replace it with a single edge.
+This rule is shown in figure \ref{fig:identity_removal_rule}.
+
+\begin{figure}[h]
+    \centering
+    \begin{ZX}
+        \rar & \zxZ{}   \rar &\\
+    \end{ZX}=
+    \begin{ZX}
+        \rar  &\rar &\\
+    \end{ZX}=
+    \begin{ZX}
+        \rar & \zxX{}   \rar &\\
+    \end{ZX}
+    \caption{Identity Removal Rule}
+    \label{fig:identity_removal_rule}
+\end{figure}
+
+
+
 \subsection{Spider Fusion}
 
-The first rule we will look at is the spider fusion rule. It allows us to fuse two spiders together if they are connected by an edge. The inputs and outputs of the two spiders are merged together. Additionally the phase of the two spiders is added together.
+The spider fusion rule allows us to fuse two spiders together if they are connected by an edge. The inputs and outputs of the two spiders are merged together. Additionally the phase of the two spiders is added together.
 
 This rule is shown in figure \ref{fig:spider_fusion_rule}.
 
@@ -155,7 +177,7 @@ Where a Hadamard gate is defined in figure \ref{fig:hadamard_gate}. Note that we
     \end{ZX}
     =
     \begin{ZX}
-        \zxZ{\frac{\pi}{2}} \rar & \zxX{\frac{\pi}{2}}  & \zxZ{\frac{\pi}{2}} \rar & \\
+        \rar &\zxZ{\frac{\pi}{2}} \rar & \zxX{\frac{\pi}{2}}  \rar & \zxZ{\frac{\pi}{2}} \rar & \\
     \end{ZX}
     \caption{Hadamard Gate}
     \label{fig:hadamard_gate}
