@@ -1,7 +1,7 @@
 \section{Introduction to ZX-Calculus}
 
 As stated in the previous section, the ZX-Calculus is represented by the
-$\mathbf{FDHilb}$ category, meaning that the objects of our category are finite-dimensional Hilbert spaces, and the morphisms are linear maps between those Hilbert spaces. The morphisms will be represented using the so-called $\textit{Spiders}$. This definition means that the whole classical quantum circuit will be represented by a network of morphism/spiders. This representation is advantageous, as it allows for a straightforward application of the simplification rules we will define later.
+$\mathbf{FDHilb}$ category, meaning that the objects of our category are finite-dimensional Hilbert spaces, and the morphisms are linear maps between those Hilbert spaces. The morphisms will be represented using the so-called $\textit{Spiders}$. This means that the whole classical quantum circuit will be represented by a network of morphism/spiders. This representation is advantageous, as it allows for a straightforward application of the simplification rules we will define later.
 
 \subsection{Spiders}
 
@@ -9,7 +9,7 @@ Spiders are the $\textit{atoms}$ of a ZX-Diagram. They represent the decompositi
 Spiders can have an arbitrary number of incoming and outgoing edges and appear in two flavors: $\textit{Z-Spiders}$ and $\textit{X-Spiders}$. This distinction is shown visually using the green and red colors when drawing the spiders.
 Additionally, spiders may carry a phase value $\alpha \in [0, 2\pi)$, which can be omitted if the angle is zero.
 
-The spiders are shown visually in figure \ref{fig:spiders-visual}. The first spider is a $\textit{Z-Spider}$, and the second is an $\textit{X-Spider}$. Both have $n$ incoming and $m$ outgoing edges, carrying a phase value $\alpha$.
+The spiders are shown visually in figure \ref{fig:spiders-visual}. The left spider is a $\textit{Z-Spider}$, and the right one is an $\textit{X-Spider}$. Both have $n$ incoming and $m$ outgoing edges, carrying a phase value $\alpha$.
 
 \begin{figure}[h]
     \centering
@@ -69,7 +69,7 @@ Note that the linear maps in figure \ref{fig:individual-spiders-linear-maps} do 
 By using the single spiders shown in figure \ref{fig:spiders-visual} we can already represent a lot of quantum gates. The most important ones are shown in figure \ref{fig:spiders-gate-representation}. We will ignore the global scalar values of ZX-Diagrams in the following sections since they are negligible for most calculations \cite{equivalence_checking_tum}. Furthermore, when working with unitary circuits, the scalar value can be restored at the end of the analysis as the resulting circuit matrix can be related to the unitary matrix \cite{vandewetering2020zxcalculus}.
 
 It is easy to verify that the gates from figure \ref{fig:spiders-gate-representation} can be represented using just the basic spiders. This proof boils down to just inserting the corresponding spiders into the formulas from figure \ref{fig:individual-spiders-linear-maps} and comparing the resulting matrices with the matrices of the Pauli gates.
-These proofs are shown in the Appendix in figures \ref{appendix:pauli-z-gate-as-spider}, \ref{appendix:pauli-x-gate-as-spider} and \ref{appendix:pauli-y-gate-as-spider}.
+These proofs are shown in the Appendix in sections \ref{appendix:pauli-z-gate-as-spider}, \ref{appendix:pauli-x-gate-as-spider} and \ref{appendix:pauli-y-gate-as-spider}.
 
 \subsection{Bigger Circuits}
 
@@ -81,11 +81,11 @@ But before working with such circuits, we need to define more rules to calculate
 
     \item \textbf{Only Topology Matters}
 
-          The first rule is that we can move spiders around freely if we maintain the correct order of the incoming and outgoing legs. This rule corresponds to the $\textit{Only Topology Matters}$ mantra of the ZX-Calculus.
+          The first rule is that we can move spiders around freely if we maintain the correct order of the incoming and outgoing legs. This rule corresponds to the $\textit{Only Topology Matters}$ mantra of the ZX-Calculus and is justified by similar operations in the underlying $\mathbf{FDHilb}$-category.
 
     \item \textbf{Parallel Composition}
 
-          The second rule allows us to calculate the matrix representation of spiders acting in parallel. We had seen this rule before when we looked at the category representation of parallel morphisms (\ref{parallel-composition}). In $\mathbf{FDHilb}$, this rule corresponds to the Kroncker product of matrices for the individual spiders.
+          The second rule allows us to calculate the matrix representation of spiders acting in parallel. We have seen this rule before when we looked at the category representation of parallel morphisms (\ref{parallel-composition}). In $\mathbf{FDHilb}$, this rule corresponds to taking the Kroncker product of the matrices of the \textit{parallel} spiders.
 
     \item \textbf{Sequential Composition}
 

@@ -1,15 +1,15 @@
 \section{Simplifcation Rules}
 
-In the previous section, we saw how to calculate a ZX-diagram's matrix representation. But the way we used to evaluate the circuit was very inefficient. We had to calculate the matrix representation of every single spider and had to perform heavy matrix multiplications and Kronecker products. This is the same process as if we had just calculated the circuit using the classical logic gate model. So we did not gain anything from using the optimization approach via the ZX-Calculus.
+In the previous section, we saw how to calculate a ZX-diagram's matrix representation. But the way we evaluated the circuit was very inefficient. We had to calculate the matrix representation of every single spider and had to perform heavy matrix multiplications and Kronecker products. This is the same process as if we had just calculated the circuit using the classical logic gate model. So we did not gain anything from using the optimization approach via the ZX-Calculus.
 In this section, we will look at a set of rewrite rules which allow us to simplify ZX-diagrams by using rewrite rules instead of performing heavy matrix operations.
 
-Note that all the rules we will discuss can be applied in both directions. In particular, this means we can use the rules to simplify a diagram and make it more complex if it helps with further simplifications. Additionally, we can apply the rules to any subgraph of the diagram, provided that the shape matches the rule. It is also essential to know that all the rules also hold if we replace all the spiders with their adjoint. This means that we can swap the color of $\mathbf{all}$ spiders in a rule and can still expect the rule to hold.
+Note that all the rules we will discuss can be applied in both directions. In particular, this means we can use the rules to simplify a diagram and make it more complex if it helps with further simplifications. Additionally, we can apply the rules to any subgraph of the diagram, provided that the shape matches the rule. It is also essential to know that all the rules also hold if we replace all the spiders with their adjoint. This means that we can swap the color of \textbf{all} spiders in a rule and can still expect the rule to hold.
 
-We also don't have to track which leg of the spider is an input and which is the output. This rule corresponds to the $\textit{Only topology matters}$ mantra we introduced in the previous section.
+We also don't have to track which leg of the spider is an input and which is the output, as they can simply be moved around using the \textit{only topology matters} rule from earlier.
 
 \subsection{Identity Removal}
 
-The rule we will look at is the identity removal rule. The rule states that we can remove any spider with exactly one input and one output if it has a phase of $0$ and can replace it with a single edge.
+The rule we will look at first, is the identity removal rule. The rule states that we can remove any spider with exactly one input and one output if it has a phase of $0$ and can replace it with a single edge.
 The application of this rule is shown in figure \ref{fig:identity_removal_rule}.
 
 \begin{figure}[h]
@@ -29,7 +29,7 @@ The application of this rule is shown in figure \ref{fig:identity_removal_rule}.
 
 \subsection{Spider Fusion}
 
-The spider fusion rule allows us to fuse two spiders if an edge connects them. The inputs and outputs of the two spiders are merged together. Additionally, the phases of the two spiders must be added together.
+The spider fusion rule allows us to fuse two spiders of the same color if an edge connects them. The inputs and outputs of the two spiders are merged together. Additionally, the phases of the two spiders must be added together.
 
 This rule is shown in figure \ref{fig:spider_fusion_rule}.
 
@@ -92,7 +92,7 @@ Note that this rule only works when $a$ is $0$ or $1$, as we can only copy compu
 
 \subsection{Bi-Algebra Rule}
 
-The bi-algebra works as seen in figure \ref{fig:bi-algebra_rule}. It has an analogous rule in digital logic, stating that the copied \textit{XOR} result corresponds to first copying the inputs and then performing two $\mathit{XOR}$ operations on the swapped inputs. This is shown in figure \ref{fig:fig:bi-algebra_rule-digital}. The ZX-Calculus analogy uses the copy-rule from figure \ref{fig:copy_rule} and a new $\mathit{XOR}$ spider.
+The bi-algebra rule works as seen in figure \ref{fig:bi-algebra_rule}. It has an analogous rule in digital logic, stating that the copied \textit{XOR} result corresponds to first copying the inputs and then performing two $\mathit{XOR}$ operations on the swapped inputs. This is shown in figure \ref{fig:fig:bi-algebra_rule-digital}. The ZX-Calculus analogy uses the copy-rule from figure \ref{fig:copy_rule} and a newly introduced $\mathit{XOR}$ spider.
 
 \begin{figure}
     \centering
@@ -101,7 +101,7 @@ The bi-algebra works as seen in figure \ref{fig:bi-algebra_rule}. It has an anal
     \label{fig:fig:bi-algebra_rule-digital}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
     \centering
     \begin{ZX}
         \zxNone{} \ar[rd,-N]  & & &\zxNone{}  \\
@@ -116,11 +116,9 @@ The bi-algebra works as seen in figure \ref{fig:bi-algebra_rule}. It has an anal
     \label{fig:bi-algebra_rule}
 \end{figure}
 
-\newpage
-
 \subsection{$\pi$-Commutation Rule}
 
-The $\pi$-commutation rule allows us to move a spider with phase $\pi$ through a spider of the opposite color. By moving the spider through the other spider, the phase of the spider is inverted. This rule is shown in figure \ref{fig:pi-commutation_rule}.
+The $\pi$-commutation rule allows to move a spider with phase $\pi$ through a spider of the opposite color. By moving the spider through the other spider, the phase of the spider is inverted. This rule is shown in figure \ref{fig:pi-commutation_rule}.
 
 \begin{figure}[h]
     \centering
@@ -142,7 +140,7 @@ The $\pi$-commutation rule allows us to move a spider with phase $\pi$ through a
 
 \subsection{Color Change Rule}
 
-The color change rule allows us to change the color of a spider. This is done by adding \textit{H} gates to all the inputs and outputs of the spider. This rule is shown in figure \ref{fig:color_change_rule}.
+The color change rule allows us to change the color of a spider. In order to maintain an equivalent diagram we need to add \textit{H} gates to all the inputs and outputs of the spider. This rule is shown in figure \ref{fig:color_change_rule}.
 
 \begin{figure}[h]
     \centering

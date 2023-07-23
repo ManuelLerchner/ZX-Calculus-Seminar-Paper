@@ -1,10 +1,10 @@
 \section{Introduction}
 
 
-In the last few decades, quantum computing has become a very active field of research. A significant reason for their success is their promise to outperform classical computers in specific tasks. The most famous example of such a speedup is Shor's algorithm \cite{shor1994algorithms}, as it allows factorizing large numbers in polynomial time.  The algorithm allows for a significant speedup compared to the best-known classical algorithm (GNFS), which takes sub-exponential time.
+In the last few decades, quantum computing has become a very active field of research. A significant reason for its success is its promise to outperform classical computers in specific tasks. The most famous example of such a computational speedup is Shor's algorithm \cite{shor1994algorithms}, as it allows factorizing large numbers in polynomial time.  The algorithm allows for a significant speedup compared to the best-known classical algorithm (GNFS), which takes sub-exponential time.
 Another example is Grover's algorithm \cite{grover1996fast}, which allows for searching entries in an unsorted database in $\mathcal{O}(\sqrt{N})$ time. Grover's algorithm provides a quadratic speedup compared to the classical $\mathcal{O}(N)$ search time. \cite{nielsen2010quantum}
 
-Usually, those algorithms are described in a high-level language, the so-called (quantum-) circuit model. This model allows us to intuitively reason about quantum algorithms because every operation applied to the quantum state is represented by a single gate. However, this model does not consider the restrictions of real quantum computers \cite{equivalence_checking_tum} and needs to be compiled into a circuit that can be executed on a real quantum computer. This process is called \textit{quantum circuit compilation}.
+Usually, those algorithms are described in a high-level language, the so-called (quantum-) circuit model. This model allows to intuitively reason about quantum algorithms because every operation applied to the quantum state is represented by a single gate. However, this model does not consider the restrictions of real quantum computers \cite{equivalence_checking_tum} and needs to be compiled into a circuit that can be executed on a real quantum computer. This process is called \textit{quantum circuit compilation}.
 
 \subsection{Quantum Circuit Compilation}
 
@@ -39,9 +39,10 @@ Many quantum computers only support the Clifford+T gate set because it is an app
 
 \subsection{Quantum Circuit Optimization}
 
-The compilation of the Toffoli gate is shown in figure \ref{fig:toffoli_decomposition}. Notice how the amount of gates increases significantly. This increase in complexity is a common problem in quantum circuit compilation, as it means that the compiled circuit will be slower. This is a massive problem since the execution time of the new circuit can exceed the coherence time of the qubits, thus making the computation useless \cite{nielsen2010quantum}.
+The compilation of the Toffoli gate into the Clifford+T gate set
+is shown in figure \ref{fig:toffoli_decomposition}. Notice how the amount of gates increases significantly. This increase in complexity is a common problem in quantum circuit compilation, as it means that the compiled circuit will be slower. This is a massive problem since the execution time of the new circuit can exceed the coherence time of the qubits, thus making the computation useless \cite{nielsen2010quantum}.
 
-Circuit Optimizers can help to mitigate this problem, as they try to reduce the number of gates in a circuit. Optimizers often work by applying rewrite rules to the circuit, which keep the circuit equivalent to the original, but reduce the number of gates. An important metric for simplifying quantum circuits is the so-called \textit{T-Count}. The T-Count is the number of T gates in a circuit. Since the T-Gate is a non-Clifford gate, it is costly to simulate and requires orders of magnitudes more resources than the traditional Clifford gates. \cite{kissinger2020TCount}
+Circuit Optimizers can help to mitigate this problem, as they try to reduce the number of gates in a circuit. Optimizers often work by applying rewrite rules to the circuit, which keep the circuit equivalent to the original, but reduce the number of gates. An important metric for simplifying quantum circuits is the so-called \textit{T-Count}. The T-Count is the number of T gates in a circuit. Since the T-Gate is a non-Clifford gate, it is costly to simulate and requires orders of magnitudes more resources than the traditional Clifford gates \cite{kissinger2020TCount}. Therefore, reducing the T-Count is a crucial step in quantum circuit optimization.
 
 \subsection{Drawbacks of Classical Circuit Optimization}
 
@@ -60,6 +61,6 @@ This trivial approach is typically very inefficient, as there exist many possibl
 
 \subsection{Quantum Circuit Optimization using the ZX-Calculus}
 
-A more efficient approach for quantum circuit optimization is to use the ZX-Calculus. The ZX-Calculus is a graphical language for quantum computing, differing from the logic-gate representation by using connected nodes to represent operations on qubits. This new representation utilizes way fewer \textit{gate-types} than the classical representation; consequently, there are fewer rewrite rules to consider in each step.
+A more efficient approach for quantum circuit optimization is found in the ZX-Calculus. The ZX-Calculus is a graphical language for quantum computing, differing from the logic-gate representation by using connected nodes to represent operations on qubits. This new representation utilizes way fewer \textit{gate-types} than the classical representation; consequently, there are fewer rewrite rules to consider in each step.
 
 ZX-Calculus has been kickstarted by Coecke and Duncan in 2008 \cite{Coecke2007graphicalcalculus}. Since then, it has been used to prove many exciting results in quantum computing. It was initially used in the field of Measurement-Based Quantum Computing (MBQC) \cite{duncan2012graphical}. But recently, it has found wide application in quantum circuit optimization and verification \cite{vandewetering2020zxcalculus}.

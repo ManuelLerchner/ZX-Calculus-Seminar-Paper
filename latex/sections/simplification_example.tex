@@ -23,14 +23,14 @@ To achieve a simplified circuit, we will perform these steps:
     \item
           Next, we will apply the \textbf{Color Change} rule to change the color of the spider left of the Hadamard gate. This operation cancels out the Hadamard gate.
     \item
-          After that, we perform the Spider Fusion rule again and remove the identity spiders; we end up with the simplified diagram shown in the rightmost diagram of figure \ref{fig:ghz}. Using the formula for calculating the matrix representation of single spiders, we compute $|GHZ\rangle = 1\cdot |000\rangle + 1\cdot |111\rangle = |000\rangle + |111\rangle$, which is proportional to the actual GHZ state. Remember that to get the correct GHZ state, we need to normalize the state first.
+          After that, we perform the Spider Fusion rule again and remove the identity spiders; we end up with the simplified diagram shown in the rightmost diagram of figure \ref{fig:ghz}. Using the formula for calculating the matrix representation of single spiders, we compute $|GHZ\rangle = 1\cdot |000\rangle + 1\cdot |111\rangle = |000\rangle + |111\rangle$, which is proportional to the actual GHZ state. Remember that to get the correct GHZ state, we would need to normalize the state first.
 \end{enumerate}
 
 By using the intermediate steps of translating the circuit into a ZX-diagram first, we were able to effortlessly calculate the matrix representation of the circuit, which would have been a lot harder if we had to calculate the matrix representation of the circuit using only its gates and the classical circuit model.
 
 \subsection{Quantum Teleportation}
 
-We will now look at a more complex example. We will look at the quantum teleportation circuit from figure \ref{fig:teleportation-classic}.
+We will now look at a more complex example, the so called quantum teleportation circuit from figure \ref{fig:teleportation-classic}.
 
 \begin{figure}[h]
     \centering
@@ -40,7 +40,7 @@ We will now look at a more complex example. We will look at the quantum teleport
 \end{figure}
 
 To understand the circuit, we will first look at the representation of measurements and entangled states in the ZX-Calculus.
-The measurement operation in a given basis is represented by parameterized spiders of the same basis \cite{vandewetering2020zxcalculus}. The parameter of the measurement-spider is a boolean value representing the measurement outcome. Based on the measurement result, we can influence other parts of the circuit by including the parameter of the measurement spider in other spiders.
+The measurement operation in a given basis is represented by  a parameterized spider of the same basis \cite{vandewetering2020zxcalculus}. The parameter of the measurement-spider is a boolean value representing the measurement outcome. Based on the measurement result, we can influence other parts of the circuit by including the parameter of the measurement spider in other spiders.
 Another interesting thing to notice is that the shared bell state, which is the key to the quantum teleportation algorithm, can be represented by the spider
 \zx{
     \zxNone{} \ar[d,C] \\[\zxWRow] \zxNone{}
@@ -65,4 +65,4 @@ In figure \ref{fig:teleportation}, we translated the circuit from figure \ref{fi
     \label{fig:teleportation}
 \end{figure}
 
-By applying the earlier rewrite rules, we can deduce that the whole circuit \textit{cancels} itself out, as the classically measured values from Alice perfectly negate the effects of Allice. This means that the circuit is equivalent to a direct channel between Alice and Bob. Therefore we showed that the teleportation works as expected.
+By applying rewrite rules, we can deduce that the whole circuit \textit{cancels} itself out, as the classically measured values from Alice perfectly negate the effects of Allice. This means that the circuit is equivalent to a direct channel between Alice and Bob. Therefore we showed that the teleportation works as expected.
