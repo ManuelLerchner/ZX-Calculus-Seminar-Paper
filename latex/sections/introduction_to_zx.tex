@@ -13,13 +13,20 @@ The spiders are shown visually in figure \ref{fig:spiders-visual}. The left spid
 
 \begin{figure}[h]
     \centering
-    \begin{ZX}
-        \leftManyDots{n}  \zxZ{\alpha} \rightManyDots{m}
-    \end{ZX}
-    \begin{ZX}
-        \leftManyDots{n}  \zxX{\alpha} \rightManyDots{m}
-    \end{ZX}
-    \caption{Fundamental spiders with $n$ incoming and $m$ outgoing edges}
+    \begin{align*}
+        \underbrace{
+            \begin{ZX}
+                \leftManyDots{n}  \zxZ{\alpha} \rightManyDots{m}
+            \end{ZX}
+        }_{\text{Z-Spider}}
+        \qquad
+        \underbrace{
+            \begin{ZX}
+                \leftManyDots{n}  \zxX{\alpha} \rightManyDots{m}
+            \end{ZX}
+        }_{\text{X-Spider}}
+    \end{align*}
+    \caption{Fundamental spiders with $n$ incoming and $m$ outgoing edges, carrying a phase value $\alpha$}
     \label{fig:spiders-visual}
 \end{figure}
 

@@ -4,7 +4,7 @@
 In the last few decades, quantum computing has become a very active field of research. A significant reason for its success is its promise to outperform classical computers in specific tasks. The most famous example of such a computational speedup is Shor's algorithm \cite{shor1994algorithms}, as it allows factorizing large numbers in polynomial time.  The algorithm allows for a significant speedup compared to the best-known classical algorithm (GNFS), which takes sub-exponential time.
 Another example is Grover's algorithm \cite{grover1996fast}, which allows for searching entries in an unsorted database in $\mathcal{O}(\sqrt{N})$ time. Grover's algorithm provides a quadratic speedup compared to the classical $\mathcal{O}(N)$ search time. \cite{nielsen2010quantum}
 
-Usually, those algorithms are described in a high-level language, the so-called (quantum-) circuit model. This model allows to intuitively reason about quantum algorithms because every operation applied to the quantum state is represented by a single gate. However, this model does not consider the restrictions of real quantum computers \cite{equivalence_checking_tum} and needs to be compiled into a circuit that can be executed on a real quantum computer. This process is called \textit{quantum circuit compilation}.
+Usually, those algorithms are described in a high-level language, the so-called (quantum-)circuit model. This model allows to intuitively reason about quantum algorithms because every operation applied to the quantum state is represented by a single gate. However, this model does not consider the restrictions of real quantum computers \cite{equivalence_checking_tum} and needs to be compiled into a circuit that can be executed on a real quantum computer. This process is called \textit{quantum circuit compilation}.
 
 \subsection{Quantum Circuit Compilation}
 
@@ -24,23 +24,24 @@ Real quantum computers come with a set of restrictions. For example, the allowed
 \begin{figure}
     \centering
     \begin{quantikz}[row sep=0.3cm, column sep=0.2cm]
-        \lstick{$\ket{a}$} & \qw& \qw &\qw & \ctrl{2}& \qw & \qw & \qw & \ctrl{2} & \ctrl{1} & \gate{T} & \ctrl{1} & \qw \\
-        \lstick{$\ket{b}$} & \qw&  \ctrl{1}  & \qw  & \qw & \qw & \ctrl{1} & \gate{T} & \qw  & \targ{} & \gate{T^\dagger} & \targ{} & \qw \\
-        \lstick{$\ket{c}$} &\gate{H}& \targ{}  & \gate{T^\dagger} & \targ{} & \gate{T} & \targ{} & \gate{T^\dagger} & \targ{} & \gate{T} & \gate{H} & \qw & \qw\\
+        \lstick{$\ket{c_1}$} & \qw& \qw &\qw & \ctrl{2}& \qw & \qw & \qw & \ctrl{2} & \ctrl{1} & \gate{T} & \ctrl{1} & \qw \\
+        \lstick{$\ket{c_2}$} & \qw&  \ctrl{1}  & \qw  & \qw & \qw & \ctrl{1} & \gate{T} & \qw  & \targ{} & \gate{T^\dagger} & \targ{} & \qw \\
+        \lstick{$\ket{t}$} &\gate{H}& \targ{}  & \gate{T^\dagger} & \targ{} & \gate{T} & \targ{} & \gate{T^\dagger} & \targ{} & \gate{T} & \gate{H} & \qw & \qw\\
     \end{quantikz}
     \caption{Decomposition of the Toffoli gate in the Clifford+T gate set.}
     \label{fig:toffoli_decomposition}
 \end{figure}
 
+
+Many quantum computers only support the Clifford+T gate set because it is an approximately universal gate set, meaning that every circuit can be simulated to a certain degree of accuracy \cite{nielsen2010quantum}. Furthermore, this set allows for an efficient, fault-tolerant implementation using surface code error correction \cite{kissinger2020TCount}.
+
 \subsection{Compilation of the Toffoli Gate}
 
-In this section, we will look at the compilation of the Toffoli gate using the Clifford+T gate set. We first look at the Toffoli gate, shown in figure \ref{fig:toffoli_gate}. The Toffoli gate doesn't exist in the Clifford+T gate set, so to be able to execute it on a real quantum computer supporting only the Clifford+T gates, we need to compile it first.
-Many quantum computers only support the Clifford+T gate set because it is an approximately universal gate set, meaning that every circuit can be simulated to a certain degree of accuracy \cite{nielsen2010quantum}. Furthermore, this set allows for an efficient, fault-tolerant implementation using surface code error correction \cite{kissinger2020TCount}.
+In this section, we will look at the compilation of the Toffoli gate using the Clifford+T gate set. We first look at the original Toffoli gate, shown in figure \ref{fig:toffoli_gate}. As the Toffoli gate doesn't exist in the Clifford+T gate set, it needs to be adapted in order to be executed on a real quantum computer. The compilation of the Toffoli gate into the Clifford+T gate set is shown in figure \ref{fig:toffoli_decomposition}.
 
 \subsection{Quantum Circuit Optimization}
 
-The compilation of the Toffoli gate into the Clifford+T gate set
-is shown in figure \ref{fig:toffoli_decomposition}. Notice how the amount of gates increases significantly. This increase in complexity is a common problem in quantum circuit compilation, as it means that the compiled circuit will be slower. This is a massive problem since the execution time of the new circuit can exceed the coherence time of the qubits, thus making the computation useless \cite{nielsen2010quantum}.
+Notice how the amount of gates increased significantly. This increase in complexity is a common problem in quantum circuit compilation, as it means that the compiled circuit will be slower. This is a massive problem since the execution time of the new circuit can exceed the coherence time of the qubits, thus making the computation useless \cite{nielsen2010quantum}.
 
 Circuit Optimizers can help to mitigate this problem, as they try to reduce the number of gates in a circuit. Optimizers often work by applying rewrite rules to the circuit, which keep the circuit equivalent to the original, but reduce the number of gates. An important metric for simplifying quantum circuits is the so-called \textit{T-Count}. The T-Count is the number of T gates in a circuit. Since the T-Gate is a non-Clifford gate, it is costly to simulate and requires orders of magnitudes more resources than the traditional Clifford gates \cite{kissinger2020TCount}. Therefore, reducing the T-Count is a crucial step in quantum circuit optimization.
 

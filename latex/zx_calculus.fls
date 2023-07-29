@@ -1000,6 +1000,8 @@ INPUT ./images/single_spider_unitaries.png
 INPUT images/single_spider_unitaries.png
 INPUT ./images/single_spider_unitaries.png
 INPUT ./images/single_spider_unitaries.png
+INPUT c:/texlive/2023/texmf-dist/fonts/vf/adobe/times/ptmr7t.vf
+INPUT c:/texlive/2023/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT ./images/cnot-regions-4.png
 INPUT ./images/cnot-regions-4.png
 INPUT images/cnot-regions-4.png
