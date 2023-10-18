@@ -2,10 +2,9 @@ import numpy as np
 from qmath.tensor import tensor_repeat, tensor
 from zx_helper.compose import compose
 from zx_helper.spider import spider
-from constants import Q_MINUS, Q_ONE, Q_PLUS, Q_ZERO
+from qmath.constants import Q_MINUS, Q_ONE, Q_PLUS, Q_ZERO
 
 np.set_printoptions(precision=3, suppress=True)
-
 
 IDENTITY = spider(1, 1, "red")
 

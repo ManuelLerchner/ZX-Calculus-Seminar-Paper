@@ -1,6 +1,6 @@
 from typing import Literal
 import numpy as np
-from constants import Q_MINUS, Q_ONE, Q_PLUS, Q_ZERO
+from qmath.constants import Q_MINUS, Q_ONE, Q_PLUS, Q_ZERO
 from qmath.tensor import tensor_repeat
 
 
